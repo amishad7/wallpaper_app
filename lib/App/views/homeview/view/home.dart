@@ -8,49 +8,45 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            FutureBuilder(
-              future: WallpaperApi.wallpaperApi.fetchData(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return Center(
-                    child: Text('${snapshot.error}'),
-                  );
-                } else if (snapshot.hasData) {
-                  List<Wallpapers>? wallpapers = snapshot.data;
+      body: FutureBuilder(
+        future: WallpaperApi.wallpaperApi.fetchData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('${snapshot.error}'),
+            );
+          } else if (snapshot.hasData) {
+            List<Wallpapers>? wallpapers = snapshot.data;
 
-                  return GridView.builder(
-                    itemCount: wallpapers!.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 2,
-                      mainAxisExtent: 250,
-                      mainAxisSpacing: 2,
+            return GridView.builder(
+              itemCount: wallpapers!.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 2,
+                mainAxisExtent: 250,
+                mainAxisSpacing: 2,
+              ),
+              itemBuilder: (context, i) {
+                return Container(
+                  margin: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    // color: Colors.red,
+                    borderRadius: BorderRadius.circular(23),
+
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        wallpapers![i].largeImageURL,
+                      ),
+                      fit: BoxFit.cover,
                     ),
-                    itemBuilder: (context, i) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          // color: Colors.red,
-                          image: DecorationImage(
-                            image: NetworkImage(wallpapers![i].largeImageURL),
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
+                  ),
+                );
               },
-            ),
-          ],
-        ),
+            );
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
       ),
     );
   }
