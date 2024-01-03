@@ -30,12 +30,11 @@ class Home extends StatelessWidget {
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 2,
-                      mainAxisExtent: 200,
+                      mainAxisExtent: 250,
                       mainAxisSpacing: 2,
                     ),
                     itemBuilder: (context, i) {
                       return Container(
-                        // height: 23,
                         decoration: BoxDecoration(
                           // color: Colors.red,
                           image: DecorationImage(
