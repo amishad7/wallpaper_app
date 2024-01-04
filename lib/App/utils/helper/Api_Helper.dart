@@ -9,10 +9,10 @@ class WallpaperApi {
 
   static final WallpaperApi wallpaperApi = WallpaperApi._();
 
-  Future<List<Wallpapers>?> fetchData() async {
+  Future<List<Wallpapers>?> fetchData({required String data}) async {
     String hostname = "https://pixabay.com";
     String apikey = "41607465-5fe3b927dd77147f637ff0b61";
-    String query = "yellow+flowers";
+    String query = data;
     String api =
         "$hostname/api/?key=$apikey&q=$query&image_type=photo&pretty=true";
     http.Response response = await http.get(Uri.parse(api));

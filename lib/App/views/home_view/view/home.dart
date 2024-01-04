@@ -7,6 +7,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController search = TextEditingController(text: "");
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -17,8 +19,9 @@ class Home extends StatelessWidget {
                 borderRadius: BorderRadius.circular(23),
                 color: Colors.blue.shade50,
               ),
-              child: const TextField(
-                decoration: InputDecoration(
+              child: TextField(
+                controller: search,
+                decoration: const InputDecoration(
                   prefixIcon: Icon(
                     Icons.search,
                     color: Colors.blueAccent,
@@ -33,7 +36,7 @@ class Home extends StatelessWidget {
             ),
             Expanded(
               child: FutureBuilder(
-                future: WallpaperApi.wallpaperApi.fetchData(),
+                future: WallpaperApi.wallpaperApi.fetchData(data: search.text),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Center(

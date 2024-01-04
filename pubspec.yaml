@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons:
   http:
   async_wallpaper:
+  provider:
 
 dev_dependencies:
   flutter_test:
