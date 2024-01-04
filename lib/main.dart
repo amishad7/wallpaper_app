@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/App/views/deatilview/view/detailview.dart';
-import 'package:wallpaper_app/App/views/homeview/view/home.dart';
+
+import 'App/views/home_view/view/home.dart';
 
 void main() {
   runApp(

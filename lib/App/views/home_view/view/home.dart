@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/App/utils/helper/Api_Helper.dart';
-import 'package:wallpaper_app/App/views/homeview/model/ApiModel.dart';
+import '../model/ApiModel.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

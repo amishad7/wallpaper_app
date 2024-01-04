@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:wallpaper_app/App/views/homeview/model/ApiModel.dart';
+
+import '../../views/home_view/model/ApiModel.dart';
 
 class WallpaperApi {
   WallpaperApi._();
